@@ -1,0 +1,157 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2015-03-09 09:55:32
+ * @version $Id$
+ */
+* { padding: 0; margin: 0; }
+html, body { height: 100%;font-family: 'Microsoft YaHei';}
+li { list-style: none; }
+.clear{-zoom:1;clear:both;overflow:hidden;}
+.clear:after{content:"";display:block;height:0;clear:both;}
+.clear_{clear:both;height:0;overflow:hidden}
+div, a { -webkit-tap-highlight-color: rgba(255,0,0,0); text-decoration: none; outline:none }
+img, fieldset, iframe{ border: 0; }
+input, select, img { vertical-align: middle; border: none; outline: none; }
+input{outline:none;}
+em, i ,del ,ins{ font-style: normal; text-decoration: none;}
+span, i, em ,b,strong { font-weight:normal;}
+
+/*账户管理页面开始 */
+.zhagnhu-cont{ width:1200px; margin:0 auto; overflow: hidden; padding-top:30px; margin-bottom:30px;}
+.zhagnhu-cont .zhuagnhu-cont-left{width:298px; border:1px solid #ddd; float:left; height:400px; }
+.zhuagnhu-cont-left dl{ width:298px; text-align:center;}
+.zhuagnhu-cont-left dl dt{height:49px; line-height:50px;border-bottom:1px solid #ddd;font-size:24px; background-color:#404144; color:#fff;}
+.zhuagnhu-cont-left dl dd{height:39px;line-height:40px; width:298px; border-bottom:1px solid #ddd; background:url(../images/right.png) no-repeat 60px;}
+.zhuagnhu-cont-left dl dd.last{border-bottom: 0;}
+.zhuagnhu-cont-left dl dd a{ font-size: 18px; color:#666; display:inline-block; width:298px;}
+.zhuagnhu-cont-left dl dd a.chang{color:#fff; background-color:#404144;}
+.zhuagnhu-cont-left dl dd a:link{text-decoration: none;color:#666;}
+.zhuagnhu-cont-left dl dd a:hover{ border-left:2px solid #FF4A00; color:#FF4A00;}
+/*账户管理页面结束 */
+
+
+/*商品交换页面开始 */
+.ex-changcot{width:1200px; margin:0 auto; overflow: hidden; margin-top: 10px;}
+.ex-changcot .ex-changcot-top{ border:1px solid #dddddd; border-top:2px solid #FF4A00; margin-bottom:10px;}
+.ex-changcot-top span{display:block; width:1200px; border-bottom:1px solid #dddddd; height:39px;}
+.ex-changcot-top p{padding-left:20px;overflow: hidden;}
+.ex-changcot-top p b{display: inline-block; width:93px; padding-left:7px; line-height: 40px; color:#747474; font-size:14px; font-weight:bold; float:left;}
+.ex-changcot-top p strong{ width:1078px;float:left; display: inline-block;line-height:40px;}
+.ex-changcot-top p a{ display: inline-block;color:#444444; font-size:14px;white-space:nowrap; padding:0 10px;text-align: center; line-height:25px;}
+
+.ex-changcot-top p a:link{color:#444444; font-size:14px;}
+.ex-changcot-top p a:visited{color:#444444; font-size:14px;}
+.ex-changcot-top p a:hover{color:#fff;background-color:#FF4A00; border-radius: 6px;}
+.ex-changcot .ex-changcot-mid{ padding: 0 20px; border:1px solid #ddd; width:1158px;}
+.ex-changcot-mid ul{width:1158px;}
+.ex-changcot-mid ul li{ padding:20px 0; overflow: hidden; border-bottom: 1px dashed #ddd;}
+.ex-changcot-mid ul li span{ width:135px; display: inline-block; float:left;margin-right:65px; }
+.ex-changcot-mid ul li span a{}
+.ex-changcot-mid ul li span a img{}
+.ex-changcot-mid ul li .ex-changcot-mid-right{ float:right; width:958px;}
+.ex-changcot-mid-right h4{ height:30px; line-height:30px; font-size:16px; color:#444444;}
+.ex-changcot-mid-right h4 em{display: inline-block; width:32px; font-size:12px; color:#898989; float:right; background: url(../images/bg08.jpg) no-repeat left; text-align:center;}
+.ex-changcot-mid-right p{line-height:28px; overflow: hidden;}
+.ex-changcot-mid-right p strong{ font-size:14px; display: inline-block; color:#666666; width:80px;}
+.ex-changcot-mid-right p i{display: inline-block; font-size:14px; color:#666666;}
+.ex-changcot-mid-right p b{ display: inline-block; float:right; width:80px; color:#fff; background-color: #FF4A00; border-radius: 2px; text-align: center; margin-right:85px;}
+.ex-changcot-mid-right p b a{ color:#fff;}
+.ex-changtwo-top-right p input#inpt-text{ border:1px solid #ddd;text-align:left;height:25px; width:300px;}
+
+.ex-changcot .ex-changcot-bot{}
+.ex-changcot-bot p{ border:1px solid #cccccc; padding-top:3px; overflow: hidden; background-color: #efefef; height:27px; padding-left:6px;}
+.ex-changcot-bot p b{width:75px; display: inline-block; float:left;background: url(../images/ic6.png) no-repeat right;}
+.ex-changcot-bot p b i{width:29px; display: inline-block; text-align:center; padding:0 2px;}
+.ex-changcot-bot p b i a{ display: inline-block; width:22px; height:22px; border: 1px solid #efefef; cursor: pointer;}
+.ex-changcot-bot p b i a:hover{ border:1px solid #ddd; border-radius: 2px; width:22px; height:22px; background-color:#e9e9e9;}
+.ex-changcot-bot p b i a img{}
+.img-class{width:100%;height:100%;cursor:pointer}
+.ex-changcot-bot p b select{ width:50px; height:20px; border:1px solid #d3d3d3; border-radius: 2px;}
+.ex-changcot-bot p span{display: inline-block; width:100px; float:left; overflow: hidden; font-size:14px; background: url(../images/ic6.png) no-repeat right; text-align: center;}
+.ex-changcot-bot p span input{ width:30px; height:16px; border:1px solid #d3d3d3; border-radius: 2px; margin:4px;}
+.ex-changcot-bot p span em{ display: inline-block;}
+.ex-changcot-bot p del{width:30px; text-align: center; display: inline-block;}
+.ex-changcot-bot p del a{display: inline-block; width:22px; height:22px; border: 1px solid #efefef; cursor: pointer;}
+.ex-changcot-bot p del a:hover{border:1px solid #ddd; border-radius: 2px; width:22px; height:22px; background-color:#e9e9e9;}
+.ex-changcot-bot p strong{float:right; display: inline-block; font-size:14px; color:#444444; margin-right: 8px;}
+.ex-changcot-bot p strong em{}
+
+
+/*商品交换页面结束 */
+
+/*商品交换的商品介绍页面开始 */
+
+.ex-changtwo{ width:1200px; margin:0 auto;}
+.ex-changtwo .ex-changtwo-top{ border:1px solid #ddd; padding: 20px 20px 10px 20px;width:1158px; overflow: hidden;}
+.ex-changtwo-top span{ display: block;width:290px; float:left; margin-right:42px;}
+.ex-changtwo-top span a{}
+.ex-changtwo-top span a img{}
+.ex-changtwo-top .ex-changtwo-top-right{ width:826px;float:left; position: relative;}
+.ex-changtwo-top-right h4{ margin-top:150px;}
+.ex-changtwo-top-right h4 input{ width:130px; float:right; text-align: center; line-height: 50px; background-color: #ff4a00; color:#fff; font-weight:bold; font-size: 16px; border-radius: 4px; margin-right:225px;}
+.ex-changtwo-top-right h3{ height:39px; line-height: 40px;border-bottom:1px solid #ddd; color:#444444; font-size:18px; margin-bottom:10px;}
+.ex-changtwo-top-right p{ line-height:40px; overflow: hidden; color:#444;}
+.ex-changtwo-top-right p input{ border:1px solid #ddd;  text-align:center;}
+.ex-changtwo-top-right p input.inpt-reduce{ width:26px; height:26px; border-right:0; background-color: #F0F0F0;}
+.ex-changtwo-top-right p input.inpt-number{ height:24px; width:70px;}
+.ex-changtwo-top-right p input.inpt-add{width:26px; height:26px; border-left:0; background-color: #F0F0F0;}
+.ex-changtwo-top-right p strong{font-weight:normal; display:inline-block;width:110px;}
+.ex-changtwo-top-right p strong i{ display: inline-block; border:1px solid #ddd; height:24px; line-height:24px; font-size: 14px; width:120px;text-align: center;}
+.ex-changtwo-top-right .like-secle{overflow: hidden; color:#444; padding-top:10px;}
+.like-secle strong{display: inline-block; float:left; width:110px;}
+.like-secle ol{ width:172px; float:left; overflow: hidden;}
+.like-secle ol li{ width:150px; border:1px solid #cecbce; background: #fff url(../images/helpt6.jpg) no-repeat 156px;  padding: 0 10px; line-height: 30px;}
+.like-secle ol li.bordercs{ border:1px solid #ff4a00;border-bottom:0;}
+.like-secle .sect-add{ width:500px; position:absolute; z-index: 98; top:170px; background:#fff;border:1px solid #ff4a00; float:left; left:110px; overflow: hidden;}
+.sect-add em{ display: inline-block; cursor: pointer;line-height:26px; text-align:center; width:120px; margin-top: 10px; margin-right:5px;}
+.sect-add em a{display:inline-block;font-size:14px; text-align: center; width:120px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis; border-radius: 6px;}
+.sect-add em a:link{}
+.sect-add em a:visited{}
+.sect-add em a:hover{ color:#fff; background-color: #ff4a00;}
+.sect-add em.addcolor{color:;}
+.ex-changtwo-top-right p em{ color:#ff4a00;}
+.ex-changtwo .ex-changtwo-cont{ width:1198px; border:1px solid #ddd; position: relative;margin:0 auto; margin-top:15px; }
+.ex-changtwo-cont span{ border-bottom:1px solid #ddd; height:48px; width:1198px; display: block;}
+.ex-changtwo-cont b{ position: absolute; top:0; left:0; z-index: 98;}
+.ex-changtwo-cont b del{background: url(../images/bg12.jpg) no-repeat left; width:122px;height:53px; display: block; text-align: center; line-height:53px; color:#fff;}
+.ex-changtwo-cont .ex-changtwo-text{background-color: #fff;padding:60px 124px 15px 124px;}
+.ex-changtwo-text h4{ height:40px; line-height: 40px; text-align: center; color:#333333; font-size:22px; font-weight: normal;}
+.ex-changtwo-text strong{ height:40px; line-height:40px; text-align: center; display: inline-block; width:950px;color:#333333;}
+.ex-changtwo-text p{ padding:0 36px; text-indent: 2em; color:#333333; line-height: 30px; font-size:16px;}
+.ex-changtwo-text em{ display:block; text-align: center; margin-bottom:50px;}
+.ex-changtwo-text em img{ display: inline-block;}
+.ex-changtwo-text em i{display:block; text-align:center; line-height:40px; margin-top:10px;}
+
+
+/*商品交换的商品介绍页面结束 */
+
+/*弹出层开始 */
+   .op-sucss{position:fixed; top:0; left:0; height:100%;z-index: 98; background:rgba(0,0,0,0.4); width:100%;min-width: 1200px;} 
+   .op-sucss .op-sucss-cont{ position: fixed; background-color: #fff;height:200px; width:400px; z-index: 99; left:50%; top:50%; margin-left:-200px; margin-top:-100px; border-radius: 6px; border:1px solid #FF4A00;}
+   .op-sucss-cont p{ text-align: center; margin-top:25px; background: url(../images/yuedu.png) no-repeat 300px; height:35px; line-height: 35px; font-size:24px;}
+   .op-sucss-cont h5{ text-align: center; margin-top:50px; font-size: 16px;}
+   .op-sucss-cont h5 a{cursor:pointer; display: inline-block; width:120px; color:#fff; background-color:#FF4A00; height:40px; line-height:40px; border-radius: 6px;}
+   
+    .op-sucss .op-sucss-cont1{ position: fixed; background-color: #fff;height:200px; width:400px; z-index: 99; left:50%; top:50%; margin-left:-200px; margin-top:-100px; border-radius: 6px; border:1px solid #FF4A00;}
+   .op-sucss-cont1 p{ text-align: center; margin-top:25px;  height:35px; line-height: 35px; font-size:24px;}
+   .op-sucss-cont1 h5{ text-align: center; margin-top:50px; font-size: 16px;}
+   .op-sucss-cont1 h5 a{ cursor:pointer; display: inline-block; width:120px; color:#fff; background-color:#FF4A00; height:40px; line-height:40px; border-radius: 6px;}
+
+   .op-fail{position:fixed; top:0; left:0; height:100%;z-index: 98; background:rgba(0,0,0,0.4); width:100%;min-width: 1200px;} 
+   .op-fail .op-fail-cont{ position: fixed; background-color: #fff;height:200px; width:400px; z-index: 99; left:50%; top:50%; margin-left:-200px; margin-top:-100px; border-radius: 6px; border:1px solid #FF4A00;}
+   .op-fail-cont p{ text-align: center; margin-top:25px;  height:35px; line-height: 35px; font-size:24px;}
+   .op-fail-cont h5{ text-align: center; margin-top:50px; font-size: 16px;}
+   .op-fail-cont h5 a{cursor:pointer; display: inline-block; width:120px; color:#fff; background-color:#FF4A00; height:40px; line-height:40px; border-radius: 6px;}
+   
+ /*弹出层开始 */
+.op-sucss-check{position:fixed; top:0; left:0; height:100%;z-index: 98; background:rgba(0,0,0,0.4); width:100%;min-width: 1200px;}
+.op-sucss-check .submitDiv-class{position: fixed; background-color: #fff;height:200px; width:400px; z-index: 99; left:50%; top:50%; margin-left:-201px; margin-top:-101px; border-radius: 6px; border:1px solid #FF4A00;}
+.submitDiv-class p{height:30px; line-height:30px; padding: 0 20px; margin-top:10px; color:#444;}
+.submitDiv-class p strong{ display: inline-block; width:120px;}
+.submitDiv-class p em{ display: inline-block;}
+.submitDiv-class p i{ display: inline-block;}
+.submitDiv-class h6{padding: 0 20px;text-align: center; margin-top:50px; font-size: 16px;}
+.submitDiv-class h6 input{display: inline-block; width:100px; color:#fff; background-color:#FF4A00; height:40px; line-height:40px; border-radius: 6px; font-size:16px; margin-right:20px;font-family:微软雅黑;}
+/*弹出层结束 */

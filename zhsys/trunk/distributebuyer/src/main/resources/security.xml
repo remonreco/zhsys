@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:security="http://www.springframework.org/schema/security"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+   <import resource="classpath*:service.xml"/>
+	<!-- 启动debug模式，正式发布项目时需要关闭 -->
+<!--     <security:debug /> -->
+
+<!--     <security:global-method-security pre-post-annotations="enabled" /> -->
+    <!-- 设置方法访问权限 -->
+   <!--  <security:global-method-security>
+        操作员管理
+        <security:protect-pointcut access="ROLE_OPERATOR_MANAGE"
+            expression="execution(* *.SysUserController.toSysUsers(..))
+                || execution(* *.SysUserController.querySysUsers(..))
+                || execution(* *.SysUserController.addSysUser(..))
+                || execution(* *.SysUserController.allSysBusiRoles(..))
+                || execution(* *.SysUserController.updateSysUser(..))
+                || execution(* *.SysUserController.checkDuplicateSysUserLoginName(..))"
+        />
+
+        角色管理
+        <security:protect-pointcut access="ROLE_BUSI_ROLE_MANAGE" expression="execution(* com.cbice.distribute.buyer.web.controller.SysBusiRoleController.toSysBusiRoles(..))" />
+        
+        功能管理
+        <security:protect-pointcut access="ROLE_ROLE_MANAGE"
+            expression="execution(* com.cbice.distribute.buyer.web.controller.SysRoleController.toSysRoles(..))
+                || execution(* com.cbice.distribute.buyer.web.controller.SysRoleController.querySysRoles(..))"
+        />
+    </security:global-method-security>
+    -->
+
+    <security:http pattern="/css/**" security="none"/>
+    <security:http pattern="/js/**" security="none"/>
+    <security:http pattern="/login.jsp" security="none"/>
+
+    <security:http use-expressions="true" auto-config="true" >
+        <security:intercept-url pattern="/**" access="isAuthenticated()" />
+        <security:form-login login-page="/land.jsp" default-target-url="/main.html" login-processing-url="/land.html" always-use-default-target="true" username-parameter="username" password-parameter="password"/>
+        <security:logout logout-success-url="/land.jsp" logout-url="/logout.html" delete-cookies="JSESSIONID"/>
+        <security:remember-me />
+        <!-- 自定义过滤器 -->
+        <!-- <security:custom-filter before="FILTER_SECURITY_INTERCEPTOR" ref="sessionOut" /> -->
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider ref="authenticationProvider"/>
+    </security:authentication-manager>
+    
+    <bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+    	<property name="userDetailsService" ref="userDetailsService"></property>
+    	<property name="passwordEncoder" ref="passwordEncoders"></property>
+		<!-- 消除 Bad credentials异常信息 -->
+		<!-- <property name="hideUserNotFoundExceptions" value="false" /> -->
+    </bean>
+    
+    <bean id="passwordEncoders" class="org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder">
+        <constructor-arg value="MD5"/>
+    </bean>
+	
+<!-- 	<bean id="userDetailsService" class="com.cbice.distribute.buyer.security.service.impl.UserDetailsServiceImpl">
+		<property name="sysUserService" ref="sysUserService"/>
+		<property name="sysRoleService" ref="sysRoleService"/>
+	</bean> -->
+	
+	<!-- 自定义过滤器 -->
+	<!-- <bean id="sessionOutInterceptor" class="com.buybal.web.interceptor.SessionInterceptor" /> -->
+
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+    <property name="maxUploadSize" value="10485760" />  
+</bean>
+</beans>

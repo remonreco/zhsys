@@ -1,0 +1,26 @@
+jdbc.driver=org.postgresql.Driver
+
+#jdbc.url=jdbc:postgresql://172.16.33.141:5432/distributedb?charSet=utf8
+#jdbc.url=jdbc:postgresql://124.193.106.236:5432/distributedb?charSet=utf8
+#jdbc.url=jdbc:postgresql://192.168.1.10:5432/distributedb?charSet=utf8
+jdbc.url=jdbc\:postgresql\://172.16.33.134\:5432/distributedb?charSet\=utf8
+#jdbc.url=jdbc:postgresql://172.16.33.134:5432/distributedb?charSet=utf8
+
+jdbc.username=distributedbuser
+jdbc.password=gUvAlOtA52m1C2Oa
+
+jdbc.validationQuery=select 1
+jdbc.validationQueryTimeout=3
+jdbc.initialSize=0
+jdbc.minIdle=0
+jdbc.maxIdle=10
+jdbc.maxActive=10
+jdbc.maxWait=10000
+jdbc.minEvictableIdleTimeMillis=600000
+jdbc.timeBetweenEvictionRunsMillis=300000
+jdbc.testWhileIdle=true
+jdbc.testOnBorrow=false
+
+config.table=t_config
+config.keyColumn=key
+config.valueColumn=value

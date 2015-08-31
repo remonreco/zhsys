@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="D:\.m2\repository\org\postgresql\postgresql\9.4-1201-jdbc4\postgresql-9.4-1201-jdbc4.jar"/>
+    <context id="context1" defaultModelType="flat" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.MapperConfigPlugin">
+            <property name="targetPackage" value="com.cbice.distribute.core.db.data"/>
+            <property name="targetProject" value="distributecore/src/main/resources"/>
+        </plugin>
+        <jdbcConnection 
+            driverClass="org.postgresql.Driver" 
+            connectionURL="jdbc:postgresql://103.8.221.222:5432/distributedb?charSet=utf8" 
+            userId="distributedbuser"
+            password="gUvAlOtA52m1C2Oa" />
+<!--         <jdbcConnection  -->
+<!--             driverClass="org.postgresql.Driver"  -->
+<!--             connectionURL="jdbc:postgresql://172.16.33.141:5432/distributedb?charSet=utf8"  -->
+<!--             userId="distributedbuser" -->
+<!--             password="gUvAlOtA52m1C2Oa" /> -->
+        <javaModelGenerator targetPackage="com.cbice.distribute.core.db.model" targetProject="distributecore/src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.cbice.distribute.core.db.data" targetProject="distributecore/src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <javaClientGenerator targetPackage="com.cbice.distribute.core.db.data" targetProject="distributecore/src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+<!--         <table schema="" tableName="t_seq"> -->
+<!--         </table> -->
+<!--         <table schema="" tableName="t_sys_user"> -->
+<!--         </table> -->
+<!--         <table schema="" tableName="t_sys_user_busi_role"> -->
+<!--         </table> -->
+<!--         <table schema="" tableName="t_sys_busi_role"> -->
+<!--         </table> -->
+<!--         <table schema="" tableName="t_sys_busi_role_role"> -->
+<!--         </table> -->
+<!--         <table schema="" tableName="t_sys_role"> -->
+<!--         </table> -->
+<!-- 	         <table schema="" tableName="t_goods_order"> -->
+<!-- 	        </table>   -->
+<!--         <table schema="" tableName="t_goods_batch"> -->
+<!--         </table> -->
+<!--         <table schema="" tableName="t_remainder_goods"> -->
+<!--         </table> -->
+<!--          <table schema="" tableName="t_user"></table> -->
+<!--            <table schema="" tableName="t_agency"></table> -->
+        <!--  <table schema="" tableName="v_good_order_user"> 
+         </table>    -->
+<!-- 		  <table schema="" tableName="t_goods"> -->
+<!--         </table> -->
+		<!--  <table schema="" tableName="t_config"> </table>--> 
+         <!-- <table schema="" tableName="t_fund"></table> --> 
+		 <!-- <table schema="" tableName="t_his_fundjour"></table>--> 
+		  <!--<table schema="" tableName="t_fundjour"></table>--> 
+		  <!-- <table schema="" tableName="t_access_gold"></table> -->
+		<!--
+		<table schema="" tableName="hs_transaction_record"></table> 
+		<table schema="" tableName="hs_exchange_order"></table>
+		<table schema="" tableName="hs_user_rights"></table>
+		<table schema="" tableName="hs_exchange_gift"></table> 
+		<table schema="" tableName="hs_commodity_approval"></table>
+		<table schema="" tableName="hs_commodity"></table> 
+		<table schema="" tableName="hs_commodity_rule"></table> -->
+		 <table schema="" tableName="hs_system"></table>
+    </context>
+</generatorConfiguration>

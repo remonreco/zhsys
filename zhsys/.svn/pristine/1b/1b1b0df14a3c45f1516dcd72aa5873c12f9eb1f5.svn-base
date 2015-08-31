@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<context:property-placeholder location="classpath*:jdbc.properties"
+		ignore-unresolvable="true" />
+
+	<bean id="dataSourceDb" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="validationQuery" value="${jdbc.validationQuery}" />
+		<property name="validationQueryTimeout" value="${jdbc.validationQueryTimeout}" />
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+		<property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+		<property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+	</bean>
+
+	<bean id="sqlSessionFactoryDb" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceDb" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceDb" />
+	</bean>
+
+	<!-- define the dataMapper -->
+	<bean id="tSeqMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.cbice.distribute.core.db.data.TSeqMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tSysUserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TSysUserMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tSysUserBusiRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TSysUserBusiRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tSysBusiRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TSysBusiRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tSysBusiRoleRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TSysBusiRoleRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tSysRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TSysRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<!-- 经销商会员管理 -->
+	<bean id="tUserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TUserMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<!-- 产品信息 -->
+	<bean id="tGoodsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TGoodsMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<!--订单信息 -->
+	<bean id="tGoodsOrderMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TGoodsOrderMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	<!-- 产品订单管理 -->
+	<bean id="vGoodOrderUserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.VGoodOrderUserMapper"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<!--发货批次 -->
+	<bean id="tGoodsBatchMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TGoodsBatchMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tAgencyUserBusiRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TAgencyUserBusiRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tAgencyBusiRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TAgencyBusiRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tAgencyBusiRoleRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TAgencyBusiRoleRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tAgencyRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TAgencyRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	<!--发货批次 -->
+	<bean id="tRemainderGoodsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TRemainderGoodsMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+
+	<bean id="tAgencyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TAgencyMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<!-- 经销商先序遍历树 -->
+	<bean id="tAgencyTreeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TAgencyTreeMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="vUserAgencyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.VUserAgencyMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+
+	<bean id="tAgencyLevelRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TAgencyLevelRoleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	<!-- 码表 -->
+		<bean id="tConfigMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TConfigMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	<!-- -->
+	<bean id="tHisOtcrealtimeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.THisOtcrealtimeMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<bean id="accessGoldMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.TAccessGoldMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<bean id="hsCommodityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.HsCommodityMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<bean id="hsCommodityApprovalMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.HsCommodityApprovalMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<bean id="hsUserRightsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.HsUserRightsMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<bean id="hsCommodityRuleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.HsCommodityRuleMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<bean id="hsExchangeOrderMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.HsExchangeOrderMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<bean id="giftMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.HsExchangeGiftMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<bean id="hsSystemMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.HsSystemMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+	
+	<!-- 实时交易记录 -->
+	<bean id="hsTransactionRecordMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.cbice.distribute.core.db.data.HsTransactionRecordMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryDb" />
+	</bean>
+</beans>

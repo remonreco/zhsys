@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:lang="http://www.springframework.org/schema/lang"
+    xmlns:task="http://www.springframework.org/schema/task" xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.1.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+    <import resource="classpath*:dao.xml" />
+
+    <bean id="seqService" class="com.cbice.distribute.core.service.impl.SeqServiceDbImpl">
+        <property name="tSeqMapper" ref="tSeqMapper" />
+    </bean>
+    <bean id="sysUserService" class="com.cbice.distribute.core.service.impl.SysUserServiceDbImpl">
+        <property name="tSysUserMapper" ref="tSysUserMapper" />
+        <property name="tSysBusiRoleMapper" ref="tSysBusiRoleMapper" />
+        <property name="tSysUserBusiRoleMapper" ref="tSysUserBusiRoleMapper" />
+        <property name="seqService" ref="seqService" />
+    </bean>
+    <bean id="sysRoleService" class="com.cbice.distribute.core.service.impl.SysRoleServiceDbImpl">
+        <property name="tSysRoleMapper" ref="tSysRoleMapper" />
+    </bean>
+    <bean id="sysBusiRoleService" class="com.cbice.distribute.core.service.impl.SysBusiRoleServiceDbImpl">
+        <property name="tSysBusiRoleMapper" ref="tSysBusiRoleMapper" />
+        <property name="tSysRoleMapper" ref="tSysRoleMapper" />
+        <property name="tSysBusiRoleRoleMapper" ref="tSysBusiRoleRoleMapper" />
+        <property name="seqService" ref="seqService" />
+    </bean>
+    <!-- <bean id="AdmimService" class="com.cbice.distribute.core.service.impl.AdmimServiceImpl"> -->
+    <!-- <property name="tSysRoleMapper" ref="tSysRoleMapper" /> -->
+
+    <!-- </bean> -->
+
+    <bean id="tUserService" class="com.cbice.distribute.core.service.impl.TUserServiceDbImpl">
+        <property name="tUserMapper" ref="tUserMapper" />
+        <property name="tAgencyBusiRoleRoleMapper" ref="tAgencyBusiRoleRoleMapper" />
+        <property name="seqService" ref="seqService" />
+    </bean>
+
+    <bean id="tGoodsService" class="com.cbice.distribute.core.service.impl.TGoodsServiceDbImpl">
+        <property name="tGoodsMapper" ref="tGoodsMapper" />
+        <property name="seqService" ref="seqService" />
+    </bean>
+
+    <!--用户订单service -->
+    <bean id="vgoodsOrderService" class="com.cbice.distribute.core.service.impl.GoodsOrderServiceImpl">
+        <property name="vGoodOrderUserMapper" ref="vGoodOrderUserMapper"></property>
+    </bean>
+
+    <bean id="tGoodsOrderService" class="com.cbice.distribute.core.service.impl.TGoodsOrderServiceDbImpl">
+        <property name="tGoodsOrderMapper" ref="tGoodsOrderMapper" />
+        <property name="seqService" ref="seqService" />
+    </bean>
+
+    <bean id="tGoodsBatchService" class="com.cbice.distribute.core.service.impl.TGoodsBatchServiceDbImpl">
+        <property name="tGoodsBatchMapper" ref="tGoodsBatchMapper" />
+    </bean>
+
+    <bean id="agencyRoleService" class="com.cbice.distribute.core.service.impl.AgencyRoleServiceDbImpl">
+        <property name="tAgencyRoleMapper" ref="tAgencyRoleMapper" />
+    </bean>
+    <bean id="agencyBusiRoleService" class="com.cbice.distribute.core.service.impl.AgencyBusiRoleServiceDbImpl">
+        <property name="tAgencyBusiRoleMapper" ref="tAgencyBusiRoleMapper" />
+        <property name="tAgencyRoleMapper" ref="tAgencyRoleMapper" />
+        <property name="tAgencyBusiRoleRoleMapper" ref="tAgencyBusiRoleRoleMapper" />
+        <property name="seqService" ref="seqService" />
+        <property name="tAgencyLevelRoleMapper" ref="tAgencyLevelRoleMapper"/>
+        <property name="tAgencyUserBusiRoleMapper" ref="tAgencyUserBusiRoleMapper"></property>
+    </bean>
+
+    <bean id="agencyUserService" class="com.cbice.distribute.core.service.impl.AgencyUserServiceDbImpl">
+        <property name="tUserMapper" ref="tUserMapper" />
+        <property name="tAgencyBusiRoleMapper" ref="tAgencyBusiRoleMapper" />
+        <property name="tAgencyUserBusiRoleMapper" ref="tAgencyUserBusiRoleMapper" />
+        <property name="seqService" ref="seqService" />
+    </bean>
+
+    <bean id="tRemainderGoodsService" class="com.cbice.distribute.core.service.impl.TRemainderGoodsServiceDbImpl">
+        <property name="tRemainderGoodsMapper" ref="tRemainderGoodsMapper" />
+        <property name="seqService" ref="seqService" />
+        <property name="tGoodsMapper" ref="tGoodsMapper" />
+    </bean>
+    <bean id="tAgencyDbService" class="com.cbice.distribute.core.service.impl.TAgencyDbServiceImpl">
+        <property name="tAgencyMapper" ref="tAgencyMapper" />
+        <property name="tAgencyTreeMapper" ref="tAgencyTreeMapper" />
+    </bean>
+    
+     <bean id="vUserAgencyDbService" class="com.cbice.distribute.core.service.impl.VUserAgencyDbServiceImpl">
+        <property name="vUserAgencyMapper" ref="vUserAgencyMapper" />
+    </bean>
+    
+     <bean id="tAgencyUserBusiRoleDbService" class="com.cbice.distribute.core.service.impl.TAgencyUserBusiRoleDbServiceImpl">
+        <property name="tAgencyUserBusiRoleMapper" ref="tAgencyUserBusiRoleMapper" />
+    </bean>
+    
+    <bean id="tAgencyLevelRoleService" class="com.cbice.distribute.core.service.impl.TAgencyLevelRoleServiceDbImpl">
+    <property name="tAgencyLevelRoleMapper" ref="tAgencyLevelRoleMapper"/>
+    </bean>
+    
+    <!-- 字典表 -->
+    <bean id="tConfigDbService" class="com.cbice.distribute.core.service.impl.TConfigDbServiceImpl">
+    <property name="tConfigMapper" ref="tConfigMapper"/>
+    </bean>
+    
+        <!--  -->
+    <bean id="tHisOtcrealtimeServiceImpl" class="com.cbice.distribute.core.service.impl.THisOtcrealtimeServiceImpl">
+    <property name="tHisOtcrealtimeMapper" ref="tHisOtcrealtimeMapper"/>
+    </bean>
+    
+    <bean id="accessGoldDbservice" class="com.cbice.distribute.core.service.impl.AccessGoldDbServeiceImpl">
+    <property name="accessGoldMapper" ref="accessGoldMapper"/>
+    </bean>
+    
+    <bean id="hsCommodityDbservice" class="com.cbice.distribute.core.service.impl.HsCommodityDbServiceImpl">
+    	<property name="hsExchangeOrderMapper" ref="hsExchangeOrderMapper"/>
+    	<property name="hsCommodityMapper" ref="hsCommodityMapper"/>
+    	<property name="giftMapper" ref="giftMapper"/>
+    </bean>
+    
+    <bean id="hsCommodityApprovalDbService" class="com.cbice.distribute.core.service.impl.HsCommodityApprovalDbServiceImpl">
+    <property name="hsCommodityApprovalMapper" ref="hsCommodityApprovalMapper"/>
+    </bean>
+    
+    <bean id="hsExchangeOrderDbService" class="com.cbice.distribute.core.service.impl.HsExchangeOrderDbServiceImpl">
+    	<property name="hsExchangeOrderMapper" ref="hsExchangeOrderMapper"/>
+    </bean>
+    
+    <bean id="hsUserRightsDbService" class="com.cbice.distribute.core.service.impl.HsUserRightsDbServiceImpl">
+    	<property name="hsUserRightsMapper" ref="hsUserRightsMapper"/>
+    </bean>
+    
+     <bean id="commodityRuleDbService" class="com.cbice.distribute.core.service.impl.CommodityRuleDbServiceImpl">
+    	<property name="hsCommodityRuleMapper" ref="hsCommodityRuleMapper"/>
+    </bean>
+    
+    <bean id="hsTransactionRecordDbService" class="com.cbice.distribute.core.service.impl.HsTransactionRecordDbServiceImpl">
+    	<property name="hsTransactionRecordMapper" ref="hsTransactionRecordMapper"/>
+    </bean>
+    
+    <bean id="hsSystemService" class="com.cbice.distribute.core.service.impl.HsSystemServiceImpl">
+    	<property name="hsSystemMapper" ref="hsSystemMapper"/>
+    </bean>
+    
+</beans>
